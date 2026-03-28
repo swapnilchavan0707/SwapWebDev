@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspiration | Swarajya Veer</title>
+    <!-- Updated: Linking directly to style.css -->
+    <link rel="stylesheet" href="../static/style.css">
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: #ffffff;
+            margin: 10% auto;
+            padding: 40px;
+            width: 90%;
+            max-width: 550px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: modalFadeIn 0.5s ease;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 25px;
+            top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #f37321;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.2);
+            color: #2c3e50;
+        }
+
+        #quote-sanskrit {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+
+        #quote-translation {
+            font-size: 18px;
+            color: #4a5a73;
+            font-style: italic;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Prevent link underline on the CTA button */
+        .cta-link {
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero-section">
+    <h1>A Beacon of Wisdom</h1>
+    <p>The Scholar-King who mastered Sanskrit and inspired a billion hearts.</p>
+</header>
+
+<nav class="navbar">
+    <ul class="nav-left">
+        <!-- Updated: Direct .html links -->
+        <li><a href="index.html">Home</a></li>
+        <li><a href="legacy.html">Legacy</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="inspiration.html">Inspiration</a></li>
+    </ul>
+    <div class="nav-right">
+        <!-- Updated: Button now points to index.html -->
+        <button class="btn-primary" onclick="window.location.href='index.html'">Return Home</button>
+    </div>
+</nav>
+
+<main>
+    <section class="glass-card">
+        <h2>The Scholar King (Rajpundit)</h2>
+        <p>
+            Beyond the sword, Sambhaji Maharaj was a master of the pen. At a very young age,
+            he authored the <b>'Budhbhushanam'</b> in Sanskrit, a treatise on politics and ethics.
+        </p>
+        <h3>Multilingual Mastery</h3>
+        <p>
+            He was proficient in several languages, including Marathi, Sanskrit, Hindi, and Persian,
+            allowing him to navigate complex diplomacy across the Indian subcontinent.
+        </p>
+    </section>
+
+    <section class="glass-card">
+        <h2 style="color: #f37321;">Leadership Lessons</h2>
+        <p>His life provides a blueprint for modern leaders on how to handle crisis with dignity.</p>
+        <ul>
+            <li><b>Resilience:</b> Staying calm when surrounded by enemies on all sides.</li>
+            <li><b>Knowledge:</b> The importance of being well-read and intellectually sharp.</li>
+            <li><b>Sacrifice:</b> Putting the nation's pride above personal life.</li>
+        </ul>
+    </section>
+</main>
+
+<section class="cta">
+    <h2>Apply His Wisdom Today</h2>
+    <p>Read 'Budhbhushanam' and learn the art of ethical leadership.</p>
+    <button class="btn-outline" id="openQuotesBtn" style="margin: 20px auto 0 auto;">Read Quotes</button>
+</section>
+
+<div id="quoteModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 style="color: #f37321; margin-bottom: 20px;">Royal Wisdom</h2>
+        <div id="quote-display">
+            <p id="quote-sanskrit">Dharmo Raksati Rakshitah</p>
+            <p id="quote-translation">Dharma protects those who protect it.</p>
+        </div>
+        <button class="btn-primary" onclick="showRandomQuote()" style="margin: 30px auto 0 auto;">Next Wisdom</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Swarajya Veer | The Scholar-King’s Wisdom</p>
+    <p style="font-size: 12px; margin-top: 10px; opacity: 0.7;">Wisdom passed down to future generations.</p>
+</footer>
+
+<script>
+    const quotes = [
+        {
+            sanskrit: "Dharmo Raksati Rakshitah",
+            translation: "Dharma protects those who protect it. (The guiding principle of Swarajya)"
+        },
+        {
+            sanskrit: "Shatroh Api Gunah Vacyah",
+            translation: "Even the good qualities of an enemy should be acknowledged."
+        },
+        {
+            sanskrit: "Idvatvam Cha Nriptvam Cha Naiva Tulayam Kadachana",
+            translation: "Knowledge and Kingship are never equal; a scholar is respected everywhere."
+        },
+        {
+            sanskrit: "Danam Bhogo Nashastisro Gatayo Bhavanti Vittasya",
+            translation: "Charity, enjoyment, and loss are the three fates of wealth."
+        }
+    ];
+
+    function showRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quote-sanskrit').innerText = quotes[randomIndex].sanskrit;
+        document.getElementById('quote-translation').innerText = quotes[randomIndex].translation;
+    }
+
+    const modal = document.getElementById('quoteModal');
+    const btn = document.getElementById('openQuotesBtn');
+    const closeBtn = document.querySelector('.close-btn');
+
+    btn.onclick = function() {
+        showRandomQuote();
+        modal.style.display = "block";
+    }
+
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
