@@ -1,11 +1,16 @@
 /**
  * Swarajya Veer - Chhatrapati Sambhaji Maharaj Tribute
  * Script: Static Gallery Mode
+ *
+ * Updated for new project structure:
+ * - index.html is now in the root
+ * - All static resources (images, style.css, script.js) are in the 'static/' folder
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Select the gallery elements
+    // 1. Select the gallery images
+    // Make sure in HTML, images are referenced like: <img src="static/images/image1.jpg" />
     const images = document.querySelectorAll('.slides img');
     const sliderContainer = document.querySelector('.slider-container');
 
@@ -16,15 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Optional: Smooth Interactive Hover Effect
     // Since we removed auto-movement, we can add a small console log
-    // or internal tracking when a user interacts with the history images.
+    // or internal tracking when a user interacts with the gallery images.
     images.forEach((img, index) => {
         img.addEventListener('mouseenter', () => {
             // Highlighting the specific image index if needed for future features
             img.style.cursor = 'pointer';
         });
 
-        // Optional: If you want clicking an image to scroll the user to the
-        // "Why Study" section automatically:
+        // Clicking an image scrolls to the "Why Study" section (if present)
         img.addEventListener('click', () => {
             const infoSection = document.querySelector('.glass-card');
             if (infoSection) {
@@ -34,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Navbar Transparency Effect
-    // This makes the glassmorphism navbar feel more dynamic as you scroll
+    // Makes the glassmorphism navbar dynamic on scroll
     window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
